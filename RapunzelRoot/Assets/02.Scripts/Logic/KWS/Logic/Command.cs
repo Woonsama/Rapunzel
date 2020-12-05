@@ -90,7 +90,6 @@ public class Command : ObjectBase
     private void Typing(string str_Command)
     {
         str_CurrentCommand += str_Command;
-        Debug.Log(str_CurrentCommand);
         PatternCorrectCheck();
     }
 

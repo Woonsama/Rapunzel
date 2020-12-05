@@ -33,7 +33,6 @@ public class Liquor :ObjectBase
         SetOriginalPos();
         spriteRender = GetComponent<SpriteRenderer>();
 
-        Debug.Log(spriteRender);
 
         spriteRender.sprite = potion[DataManager.Instance.PotionLevel[(int)ePotioColorType]];
         return base.OnAwakeCoroutine();
@@ -49,7 +48,7 @@ public class Liquor :ObjectBase
         spriteRender.sprite = liquor_Full;
     }
 
-    private int GetDamage()
+    public int GetDamage()
     {
         return damage[DataManager.Instance.PotionLevel[(int)ePotioColorType] + 1];
     }

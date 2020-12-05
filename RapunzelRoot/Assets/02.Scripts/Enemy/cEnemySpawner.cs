@@ -31,12 +31,14 @@ public class cEnemySpawner : MonoBehaviour
     [SerializeField]
     [Header("deadchecker")]
     public cEnemyDeadCheck cEDC;
-    
- 
+
+    bool isGameStart;
 
 	// Update is called once per frame
 	void Update()
-    { 
+    {
+        if (isGameStart == false) return;
+
         if (m_fSecValue > 0)
         {
             m_fSecValue -= Time.deltaTime;
@@ -54,6 +56,7 @@ public class cEnemySpawner : MonoBehaviour
     //몇초후부터스폰시작,스폰주기,1번에몇마리,몇마리까지소환
     public void Init(float spawndelayTime, float spawntime, int _howmany, int _limitspawn)
     {
+        isGameStart = true;
         m_fSecValue = spawndelayTime;
         m_fSpawnTime = spawntime;
         m_nHowMany = _howmany;
@@ -84,10 +87,11 @@ public class cEnemySpawner : MonoBehaviour
             Enemy.GetComponent<cEnemy>().Init(1+_EnemyUpgrade, _EnemyUpgrade);
 
             m_nLimitSpawnNumber--;
-            if (m_nLimitSpawnNumber < 0)//이너미스포너 끝
+            if (m_nLimitSpawnNumber <= 0)//이너미스포너 끝
             {
+                isGameStart = false;
                 StopCoroutine(SpawnEnemy());
-                Destroy(this.gameObject);
+                break;
             }
             yield return new WaitForSeconds(Random.Range(0.0f,0.6f));
         }

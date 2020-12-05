@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player :ObjectBase
 {
@@ -15,6 +16,7 @@ public class Player :ObjectBase
         {
             isDie = true;
             Health = 0;
+            SceneManager.LoadScene("Title");
         }
         inGameui.HpHit(Health);
     }

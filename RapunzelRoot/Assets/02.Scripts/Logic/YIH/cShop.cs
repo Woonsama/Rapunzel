@@ -145,10 +145,6 @@ public class cShop : MonoBehaviour
             DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-1000);
         }
     }
-    public void ExitShop()
-    {
-
-    }
 
     private void OnClickExit()
     {

@@ -121,16 +121,28 @@ public class cInGameUi : MonoBehaviour
     public void AddCommand(int first, int second)
     {
         if (command.str_LiquorCombo[first][second] == 'Q')
+		{
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().gameObject.SetActive(true);
             layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[0];
+		}
 
         if (command.str_LiquorCombo[first][second] == 'W')
+		{
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().gameObject.SetActive(true);
             layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[1];
+		}
 
         if (command.str_LiquorCombo[first][second] == 'E')
+		{
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().gameObject.SetActive(true);
             layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[2];
+		}
 
         if (command.str_LiquorCombo[first][second] == 'R')
+		{
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().gameObject.SetActive(true);
             layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[3];
+		}
 
     }
 

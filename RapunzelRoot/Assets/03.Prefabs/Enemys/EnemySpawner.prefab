@@ -50,9 +50,10 @@ MonoBehaviour:
   EnemyPrefabs:
   - {fileID: 3070528969218850843, guid: d5d3041f176a56042949efdad703839c, type: 3}
   - {fileID: 3070528969218850843, guid: 412aaaf6d1abca641831fbef8367d519, type: 3}
-  - {fileID: 3070528969218850843, guid: 195f93f091fb74c42bc1a60ae14ab624, type: 3}
   - {fileID: 3070528969218850843, guid: 71671af32b45f38418189b5520885f96, type: 3}
+  - {fileID: 3070528969218850843, guid: bcca4260bb05eca4f8873a2af00c981a, type: 3}
   m_fSpawnYPos: -10
   m_fSpawnMinnMax:
   - -4
   - 4
+  cEDC: {fileID: 0}

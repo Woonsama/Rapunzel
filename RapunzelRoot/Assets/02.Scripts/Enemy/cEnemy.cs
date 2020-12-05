@@ -19,7 +19,7 @@ public class cEnemy : MonoBehaviour
     [SerializeField]
     [Header("적용될중력값")]
     private float m_fGravityValue;
-    [SerializeField]
+
     GameController gameController;
 
     private Animator animator;
@@ -40,6 +40,7 @@ public class cEnemy : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         EnemyManager = GameObject.Find("EnemyManager").GetComponent<cEnemyDeadCheck>();
+        gameController = GameObject.Find("InGameRoot").GetComponent<GameController>();
         cSP = GetComponent<cScorePlus>();
         animator = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
@@ -52,6 +53,7 @@ public class cEnemy : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Hit(123);
+            DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(1000000);
         }
         if (m_bIsDead == true)
         {
@@ -86,12 +88,15 @@ public class cEnemy : MonoBehaviour
     }
     private void DeadEvent()
     {
-        cSP.AddMoney();
-        cSP.AddScore();
-        m_bIsDead = true;
-        rigid2d.gravityScale = m_fGravityValue;
-        rigid2d.AddForce(new Vector2(0, m_fDeadJumpValue));
-        animator.SetTrigger("IsDead");
+        if (m_bIsDead == false)
+        {
+            m_bIsDead = true;
+            cSP.AddMoney();
+            cSP.AddScore();
+            rigid2d.gravityScale = m_fGravityValue;
+            rigid2d.AddForce(new Vector2(0, m_fDeadJumpValue));
+            animator.SetTrigger("IsDead");
+        }
     }
     private void MoveFunction()
     {
@@ -109,7 +114,7 @@ public class cEnemy : MonoBehaviour
 
             if (EnemyManager.IsGameOver())
             {
-                gameController.isWaveClear = true;
+                gameController.isWaveClear = true;         
             }
 
             Destroy(this.gameObject);
@@ -118,6 +123,7 @@ public class cEnemy : MonoBehaviour
 
     public void HitbyPotion(int _value, int _damage)
     {
+
         if (m_nType == _value || _value == 100)//설정된 커멘드가 포션커멘드와 같을때
         {
             Hit(_damage);
@@ -144,13 +150,20 @@ public class cEnemy : MonoBehaviour
                 playercode.Hit();
                 Destroy(this.gameObject);
                 EnemyManager.MinusEnemyCount();
+                if (EnemyManager.IsGameOver())
+                {
+                    gameController.isWaveClear = true;
+                }
                 //플레이어 체력감소
             }
         }
         if (collision.CompareTag("Liquor"))//포션이랑랑 충돌하면
         {
             if (m_bIsDead == false)
-                HitbyPotion(1,10);
+            {
+                Liquor liq = collision.gameObject.GetComponent<Liquor>();
+                HitbyPotion((int)liq.ePotioColorType, liq.GetDamage());
+            }
         }
     }
 

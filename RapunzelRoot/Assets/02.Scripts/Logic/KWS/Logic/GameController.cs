@@ -48,18 +48,27 @@ public class GameController : ObjectBase
 
     private IEnumerator Wave_Coroutine()
 	{
+        print("시작");
+            Init();
         while (!isWaveClear)
         {
-            Init();
-            yield return StartCoroutine(Command_Coroutine());
-            yield return StartCoroutine(Shooter_Coroutine());
-            yield return StartCoroutine(Fire_Coroutine());
+            ShooterInit();
+            StartCoroutine(GameCoroutine());
             yield return null;
-        }
-
-        yield return StartCoroutine(Shop_Coroutine());
+        }        
         DataManager.Instance.currentWaveIndex++;
+
+        yield return StartCoroutine(WaveClear_Coroutine());
+        yield return StartCoroutine(Shop_Coroutine());
         RemoveEnemyAll();
+    }
+
+    private IEnumerator GameCoroutine()
+	{
+
+        yield return StartCoroutine(Command_Coroutine());
+        yield return StartCoroutine(Shooter_Coroutine());
+        yield return StartCoroutine(Fire_Coroutine());
     }
 
     private void RemoveEnemyAll()
@@ -88,11 +97,13 @@ public class GameController : ObjectBase
         ShopUI.SetActive(true);
 
         cShop shop = ShopUI.GetComponent<cShop>();
-
+        
         while (!shop.isClose)
         {
+            print(shop.isClose);
             yield return null;
         }
+
     }
 
     private IEnumerator GameClear_Coroutine()
@@ -101,26 +112,28 @@ public class GameController : ObjectBase
         yield break;
 	}
 
-    private void Init()
+    private void ShooterInit()
     {
         shooter.gameObject.SetActive(false);
         command.ReleaseCommand();
+    }
+	private void Init()
+	{
         isWaveClear = false;
-
         EnemySpawner.GetComponent<cEnemySpawner>().Init(
             enemySpawnData[DataManager.Instance.currentWaveIndex].spawnDelay,
             enemySpawnData[DataManager.Instance.currentWaveIndex].spawnTime,
             enemySpawnData[DataManager.Instance.currentWaveIndex].howMany,
             enemySpawnData[DataManager.Instance.currentWaveIndex].maxSpawnCount);
-
-
-       // ShopUI.SetActive(false);
+        ShopUI.SetActive(false);
     }
 
-    private IEnumerator Command_Coroutine()
+	private IEnumerator Command_Coroutine()
     {
         while(!command.isCorrectCommand)
         {
+            if (isWaveClear == true)
+                break;
             yield return null;
         }
         command.isCorrectCommand = false;
