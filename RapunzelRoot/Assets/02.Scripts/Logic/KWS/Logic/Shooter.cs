@@ -5,10 +5,10 @@ using UnityEngine;
 public class Shooter : ObjectBase
 {
     [Header("Rotate Offset")]
-    public float rotateOffset = 25f;
+    public float rotateOffset = 15f;
 
     [Header("RotateSpeed")]
-    public float rotateSpeed = 50.0f;
+    public float rotateSpeed = 100.0f;
 
     [Header("Rotate Target")]
     public GameObject rotateTarget;

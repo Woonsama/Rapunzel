@@ -40,16 +40,20 @@ public class Command : ObjectBase
 
     private void InputCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) Typing("Q");
-        if (Input.GetKeyDown(KeyCode.W)) Typing("W");
-        if (Input.GetKeyDown(KeyCode.E)) Typing("E");
-        if (Input.GetKeyDown(KeyCode.R)) Typing("R");
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Typing("Q");
+        if (Input.GetKeyDown(KeyCode.RightArrow)) Typing("W");
+        if (Input.GetKeyDown(KeyCode.UpArrow)) Typing("E");
+        if (Input.GetKeyDown(KeyCode.DownArrow)) Typing("R");
         if (Input.GetKeyDown(KeyCode.LeftShift)) CreateGoldPotion();
     }
 
     private void CreateGoldPotion()
     {
-        Instantiate(goldPotion, goldPotionGeneratePos, Quaternion.identity);
+        if(DataManager.Instance.iHaveGoldPotionCount > 0)
+        {
+            Instantiate(goldPotion, goldPotionGeneratePos, Quaternion.identity);
+            DataManager.Instance.iHaveGoldPotionCount--;
+        }
     }
 
     private void Typing(string str_Command)

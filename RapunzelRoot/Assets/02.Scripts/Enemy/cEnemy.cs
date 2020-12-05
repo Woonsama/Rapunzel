@@ -33,10 +33,12 @@ public class cEnemy : MonoBehaviour
 
     cEnemyDeadCheck EnemyManager;
 
+    private Player player;
 
     // Start is called before the first frame update
     void Awake()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         EnemyManager = GameObject.Find("EnemyManager").GetComponent<cEnemyDeadCheck>();
         cSP = GetComponent<cScorePlus>();
         animator = GetComponent<Animator>();
@@ -57,6 +59,7 @@ public class cEnemy : MonoBehaviour
         }
         else
         {
+           if(player.Health > 0)
             MoveFunction();
         }
         //LookAt2D(TargetPos.position);
@@ -135,15 +138,19 @@ public class cEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))//플레이어랑 충돌하면
         {
-            Player playercode = collision.gameObject.GetComponent<Player>();
-            playercode.Hit();
-            Destroy(this.gameObject);
-            EnemyManager.MinusEnemyCount();
-            //플레이어 체력감소
+            if(m_bIsDead == false)
+            {
+                Player playercode = collision.gameObject.GetComponent<Player>();
+                playercode.Hit();
+                Destroy(this.gameObject);
+                EnemyManager.MinusEnemyCount();
+                //플레이어 체력감소
+            }
         }
         if (collision.CompareTag("Liquor"))//포션이랑랑 충돌하면
         {
-            HitbyPotion(1,10);
+            if (m_bIsDead == false)
+                HitbyPotion(1,10);
         }
     }
 

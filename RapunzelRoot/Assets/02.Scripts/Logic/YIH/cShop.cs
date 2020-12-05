@@ -21,6 +21,10 @@ public class cShop : MonoBehaviour
     public GameObject[] UseItem = new GameObject[3];
 
     Player PlayerCode;
+    [Header("Button - Exit")]
+    public Button button_Exit;
+
+    private bool isClose;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,6 +34,8 @@ public class cShop : MonoBehaviour
         {
             Debug.Log("플레이어못찾음");
         }
+
+        button_Exit.onClick?.AddListener(OnClickExit);
     }
 	private void OnEnable()
 	{
@@ -37,6 +43,8 @@ public class cShop : MonoBehaviour
     }
 	public void NextPageClick()
     {
+        button_Exit.gameObject.SetActive(true);
+
         nowPage = 1;
         shopui.sprite = pages[nowPage]; 
         for (int i = 0; i < 4; i++)
@@ -56,6 +64,8 @@ public class cShop : MonoBehaviour
     }
     public void PrePageClick()
     {
+        button_Exit.gameObject.SetActive(false);
+
         nowPage = 0;
         shopui.sprite = pages[nowPage];
         for (int i = 0; i < 4; i++)
@@ -129,6 +139,11 @@ public class cShop : MonoBehaviour
             DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-1000);
         }
 
+    }
+
+    private void OnClickExit()
+    {
+        this.gameObject.SetActive(false);
     }
 
 }

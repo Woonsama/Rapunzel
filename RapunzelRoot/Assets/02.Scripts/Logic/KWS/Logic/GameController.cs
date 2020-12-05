@@ -20,7 +20,6 @@ public class GameController : ObjectBase
 
     public bool isWaveClear { get; set; }
 
-
     [Header("EnemySpawner")]
     public GameObject EnemySpawner;
 
@@ -37,6 +36,7 @@ public class GameController : ObjectBase
     protected override IEnumerator OnAwakeCoroutine()
     {
         DataManager.Instance.gameData.ResetScore();
+        DataManager.Instance.gameData.ResetGold();
 
         for (int i = 0; i < waveCount; i++)
 		{
@@ -63,9 +63,21 @@ public class GameController : ObjectBase
 
     private IEnumerator Shop_Coroutine()
 	{
-        //Open Shop
+        OpenShop();
+
         yield break;
 	}
+
+    private void OpenShop()
+    {
+        Time.timeScale = 0;
+        ShopUI.SetActive(true);
+    }
+
+    private void CloseShop()
+    {
+        Time.timeScale = 1;
+    }
 
     private IEnumerator GameClear_Coroutine()
 	{

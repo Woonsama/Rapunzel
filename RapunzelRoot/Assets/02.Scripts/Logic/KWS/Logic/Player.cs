@@ -9,7 +9,8 @@ public class Player :ObjectBase
     public cInGameUi inGameui;
     public void Hit()
     {
-        Health--;
+        if(Health > 0) Health--;
+
         if (Health == 0)
         {
             isDie = true;

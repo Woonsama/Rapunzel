@@ -32,6 +32,12 @@ public class GameData
         SaveData();
     }
 
+    public void ResetGold()
+    {
+        iGold = 0;
+        SaveData();
+    }
+
     public void SaveData()
     {
         PlayerPrefs.SetInt("Gold", iGold);
