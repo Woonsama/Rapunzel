@@ -25,7 +25,7 @@ public class cScorePlus : MonoBehaviour
     }
     public void AddMoney()
     {
-        DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(_money);
+        DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(m_nMoney);
         //죽으면 돈추가
     }
 
