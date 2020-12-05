@@ -59,24 +59,34 @@ public class GameController : ObjectBase
 
         yield return StartCoroutine(Shop_Coroutine());
         DataManager.Instance.currentWaveIndex++;
+        RemoveEnemyAll();
+    }
+
+    private void RemoveEnemyAll()
+    {
+        GameObject[] enemy = GameObject.FindGameObjectsWithTag("Enemy");
+
+        for(int i = 0; i < enemy.Length; i++)
+        Destroy(enemy[i]);
     }
 
     private IEnumerator Shop_Coroutine()
 	{
-        OpenShop();
+        yield return StartCoroutine(OpenShop());
 
         yield break;
 	}
 
-    private void OpenShop()
+    private IEnumerator OpenShop()
     {
-        Time.timeScale = 0;
         ShopUI.SetActive(true);
-    }
 
-    private void CloseShop()
-    {
-        Time.timeScale = 1;
+        cShop shop = ShopUI.GetComponent<cShop>();
+
+        while (!shop.isClose)
+        {
+            yield return null;
+        }
     }
 
     private IEnumerator GameClear_Coroutine()

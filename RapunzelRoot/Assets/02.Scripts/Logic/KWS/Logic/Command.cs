@@ -6,6 +6,7 @@ public class Command : ObjectBase
 {
     //Const
     const int c_LiquorCount = 4;
+    const int c_InitialLength = 4;
 
     //Public
     public bool isSuccessed { get; set; }
@@ -25,6 +26,12 @@ public class Command : ObjectBase
 
     public bool isCorrectCommand { get; set; }
 
+    protected override IEnumerator OnAwakeCoroutine()
+    {
+        InitPattern();
+        return base.OnAwakeCoroutine();
+    }
+
     private void Update()
     {
         InputCheck();
@@ -35,8 +42,30 @@ public class Command : ObjectBase
         str_CurrentCommand = string.Empty;
     }
 
+    public void AddPattern(int index)
+    {
+        str_LiquorCombo[index] += GetRandomCommand();
+    }
+
     #region private
 
+    private void InitPattern()
+    {
+        for(int i = 0; i < c_LiquorCount; i++)
+        {
+            for(int j = 0; j < c_InitialLength; j++)
+            {
+                str_LiquorCombo[i] += GetRandomCommand();
+            }
+        }
+    }
+
+    private string GetRandomCommand()
+    {
+        string[] str_temp = { "Q", "W", "E", "R" };
+
+        return str_temp[Random.Range(0, 4)];
+    }
 
     private void InputCheck()
     {

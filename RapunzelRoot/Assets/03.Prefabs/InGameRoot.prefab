@@ -781,6 +781,7 @@ MonoBehaviour:
   liquorParent: {fileID: 8995506357186289932}
   EnemySpawner: {fileID: 5448045379006490854, guid: d33dafd2ee099b94189f6b8027ec6c30,
     type: 3}
+  ShopUI: {fileID: 0}
   waveCount: 1
   enemySpawnData:
   - spawnDelay: 2
@@ -830,11 +831,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87fd602ab973347418788a3cc210ed20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cInGameUI: {fileID: 0}
   str_LiquorCombo:
-  - QQEE
-  - QQWE
-  - QWEQ
-  - RWEQ
+  - 
+  - 
+  - 
+  - 
   str_CurrentCommand: 
   liquorIndex: -1
   goldPotion: {fileID: 594642963333126418, guid: 593fc3623d599ed45b148372e1c2ce12,
@@ -1004,6 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f5bbac7c246b04dacdf7ac6b43ce04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inGameui: {fileID: 0}
 --- !u!61 &1725245245874552091
 BoxCollider2D:
   m_ObjectHideFlags: 0

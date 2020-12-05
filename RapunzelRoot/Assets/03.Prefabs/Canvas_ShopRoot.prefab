@@ -1550,6 +1550,7 @@ MonoBehaviour:
   pages:
   - {fileID: 21300000, guid: 63b143eed18124642a441f7d918e1ffa, type: 3}
   - {fileID: 21300000, guid: 0382f0d5abe6e154c8a4b4637edbcf0b, type: 3}
+  closebutton: {fileID: 0}
   shopui: {fileID: 4591676565646805236}
   PageSoldOut:
   - {fileID: 4591676566743153561}

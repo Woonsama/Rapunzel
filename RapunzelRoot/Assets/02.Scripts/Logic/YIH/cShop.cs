@@ -8,10 +8,6 @@ public class cShop : MonoBehaviour
     [Header("페이지들")]
     public Sprite[] pages;
 
-
-    [Header("closebutton")]
-    public GameObject closebutton;
-
     [Header("상점ui")]
     public Image shopui;
 
@@ -27,7 +23,10 @@ public class cShop : MonoBehaviour
     [Header("Button - Exit")]
     public Button button_Exit;
 
-    private bool isClose;
+    [Header("Command")]
+    public Command command;
+
+    public bool isClose;
 
     // Start is called before the first frame update
     void Awake()
@@ -64,7 +63,6 @@ public class cShop : MonoBehaviour
         UseItem[0].SetActive(false);
         UseItem[1].SetActive(false);
         UseItem[2].SetActive(true);
-        closebutton.SetActive(true);
     }
     public void PrePageClick()
     {
@@ -86,7 +84,6 @@ public class cShop : MonoBehaviour
         UseItem[0].SetActive(true);
         UseItem[1].SetActive(true);
         UseItem[2].SetActive(false);
-        closebutton.SetActive(false);
     }
 
     public void Pos1GradeUpgrade(int postiontype)
@@ -100,6 +97,7 @@ public class cShop : MonoBehaviour
                     DataManager.Instance.PotionLevel[postiontype] = 1;
                     PageSoldOut[postiontype].SetActive(true);
                     DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-10);
+                    command.AddPattern(postiontype);
                 }
             }
         }
@@ -112,6 +110,7 @@ public class cShop : MonoBehaviour
                     PageSoldOut[postiontype].SetActive(true);
                     DataManager.Instance.PotionLevel[postiontype] = 2;
                     DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-30);
+                    command.AddPattern(postiontype);
                 }
             }
         }
@@ -151,6 +150,7 @@ public class cShop : MonoBehaviour
 
     private void OnClickExit()
     {
+        isClose = true;
         this.gameObject.SetActive(false);
     }
 

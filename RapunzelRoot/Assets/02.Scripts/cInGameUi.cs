@@ -25,16 +25,25 @@ public class cInGameUi : MonoBehaviour
     public Sprite soundOn;
     public Sprite soundOff;
 
+    [Header("Command")]
+    public Command command;
+
     [Header("Child Command Layer")]
     public Child layer;
 
+    [Header("Command Prefab")]
+    public Sprite[] commandSprite = new Sprite[4];
 
     private void Awake()
 	{
         Init();
 	}
+
+
     public void Init()
     {
+        layer.GetChildGameObject();
+
         for (int i = 0; i < m_goHps.Length; i++)
         {
             m_goHps[i].GetComponent<Image>().sprite = m_imgHpFull;
@@ -42,6 +51,8 @@ public class cInGameUi : MonoBehaviour
 
         //SoundButton
         button_SoundOnOff.onClick?.AddListener(OnClickSoundOnOff);
+
+        SetCommand();
     }
 
     public void SetScoreText(int _value)
@@ -86,9 +97,49 @@ public class cInGameUi : MonoBehaviour
         SoundManager.Instance.isSoundOn = !SoundManager.Instance.isSoundOn;
     }
 
-    private void SetCommand()
+    public void SetCommand()
     {
-        
+        for(int i = 0; i < command.str_LiquorCombo.Length; i++)
+        {
+            for(int j = 0; j < command.str_LiquorCombo[i].Length; j++)
+            {
+                //Debug.Log(layer.child[i].transform.GetChild(0).transform.childCount);
+                //Debug.Log(command.str_LiquorCombo[i].Length);
+
+                //if (command.str_LiquorCombo[i].Length < layer.child[i].transform.GetChild(0).transform.childCount )
+                //{
+                //    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().enabled = true;
+
+                //    if (command.str_LiquorCombo[i][j] == 'Q')
+                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[0];
+
+                //    if (command.str_LiquorCombo[i][j] == 'W')
+                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[1];
+
+                //    if (command.str_LiquorCombo[i][j] == 'E')
+                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[2];
+
+                //    if (command.str_LiquorCombo[i][j] == 'R')
+                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[3];
+                //}
+                //else
+                //{
+                //    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().enabled = false;
+                //}
+
+                if (command.str_LiquorCombo[i][j] == 'Q')
+                    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[0];
+
+                if (command.str_LiquorCombo[i][j] == 'W')
+                    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[1];
+
+                if (command.str_LiquorCombo[i][j] == 'E')
+                    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[2];
+
+                if (command.str_LiquorCombo[i][j] == 'R')
+                    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[3];
+            }
+        }
     }
 
     #endregion private
