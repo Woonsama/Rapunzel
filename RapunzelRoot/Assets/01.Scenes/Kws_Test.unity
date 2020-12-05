@@ -214,6 +214,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &253989691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253989692}
+  m_Layer: 0
+  m_Name: LiquorParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &253989692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253989691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 818051403}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481358463
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +354,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.76, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1578416210}
   m_Father: {fileID: 904726495}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -411,6 +442,7 @@ Transform:
   - {fileID: 1695468978}
   - {fileID: 857344782}
   - {fileID: 1299049053}
+  - {fileID: 253989692}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -429,6 +461,9 @@ MonoBehaviour:
   command: {fileID: 857344781}
   shooter: {fileID: 1695468979}
   player: {fileID: 2054915778}
+  liquorGenerator: {fileID: 1299049052}
+  liquorGeneratePos: {fileID: 1578416210}
+  liquorParent: {fileID: 253989691}
 --- !u!1 &857344780
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,10 +575,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liquor:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 594642963333126418, guid: 54549d5161262f4458077eda9cc2d4ed, type: 3}
+  - {fileID: 594642963333126418, guid: 975391a254e472749b2bc8d1a06805a1, type: 3}
+  - {fileID: 594642963333126418, guid: 5bcc6edc2029c7249baeb69a1c2b70c0, type: 3}
+  - {fileID: 594642963333126418, guid: 855fbf04facb9ca4faf9ff3632951b2f, type: 3}
 --- !u!4 &1299049053
 Transform:
   m_ObjectHideFlags: 0
@@ -623,6 +658,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578416209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578416210}
+  m_Layer: 0
+  m_Name: PotionGeneratePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578416210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578416209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 705100624}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695468977
 GameObject:

@@ -24,19 +24,25 @@ public class Command : ObjectBase
     private void Update()
     {
         InputCheck();
-        PatternCorrectCheck();
     }
 
     #region private
 
+
     private void InputCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) str_CurrentCommand += "Q";
-        if (Input.GetKeyDown(KeyCode.W)) str_CurrentCommand += "W";
-        if (Input.GetKeyDown(KeyCode.E)) str_CurrentCommand += "E";
-        if (Input.GetKeyDown(KeyCode.R)) str_CurrentCommand += "R";
+        if (Input.GetKeyDown(KeyCode.Q)) Typing("Q");
+        if (Input.GetKeyDown(KeyCode.W)) Typing("W");
+        if (Input.GetKeyDown(KeyCode.E)) Typing("E");
+        if (Input.GetKeyDown(KeyCode.R)) Typing("R");
 
+    }
+
+    private void Typing(string str_Command)
+    {
+        str_CurrentCommand += str_Command;
         Debug.Log(str_CurrentCommand);
+        PatternCorrectCheck();
     }
 
     private void PatternCorrectCheck()
@@ -48,10 +54,15 @@ public class Command : ObjectBase
                 liquorIndex = i;
                 ReleaseCommand();
                 isCorrectCommand = true;
+                Debug.Log("Command Correct");
                 break;
             }
+            else
+            {
+                if(str_LiquorCombo[i].Length < str_CurrentCommand.Length)
+                ReleaseCommand(); 
+            }
 
-            ReleaseCommand(); 
         }
     }
 

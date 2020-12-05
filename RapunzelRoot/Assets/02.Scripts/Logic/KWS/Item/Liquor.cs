@@ -8,17 +8,27 @@ public class Liquor :ObjectBase
 {
     const int c_Max_ReinForceCount = 3;
 
-    public int level;
+    public int level = 1;
     public int[] damage = new int[c_Max_ReinForceCount];
     public int[] price = new int[c_Max_ReinForceCount];
     public Sprite liquor_Full;
 
     private Image image;
 
-    public Liquor()
+    private Vector3 originPos;
+    private float angle;
+
+    protected override IEnumerator OnAwakeCoroutine()
     {
+        angle = GameObject.Find("Shooter").transform.GetChild(1).transform.eulerAngles.z;
+        SetOriginalPos();
         image = GetComponent<Image>();
-        level = 1;
+        return base.OnAwakeCoroutine();
+    }
+
+    private void Update()
+    {
+        MoveTo();
     }
 
     public void ChangeImage_Full()
@@ -34,5 +44,19 @@ public class Liquor :ObjectBase
     public void LevelUp()
     {
         level++;
+    }
+
+    private void SetOriginalPos()
+    {
+        originPos = transform.position;
+    }
+
+    Vector3 movePower;
+
+    private void MoveTo()
+    {
+        movePower = Quaternion.AngleAxis(angle, Vector3.down) * new Vector3(0, -1, 0) * Time.deltaTime;
+        Debug.Log(angle);
+        transform.position += movePower;
     }
 }

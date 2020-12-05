@@ -15,6 +15,7 @@ public class GameController : ObjectBase
 
     [Header("Liquor Generator")]
     public LiquorGenerator liquorGenerator;
+    public Transform liquorGeneratePos;
     public GameObject liquorParent;
 
     protected override IEnumerator OnAwakeCoroutine()
@@ -58,7 +59,7 @@ public class GameController : ObjectBase
 
     private IEnumerator Fire_Coroutine()
     {
-        liquorGenerator.GenerateLiquor(command.liquorIndex, liquorParent.transform);
+        liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);
         yield break;
     }
 

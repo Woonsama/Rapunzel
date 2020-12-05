@@ -46,7 +46,7 @@ public class cInGameUi : MonoBehaviour
 	private void Update()
 	{
         SetScoreText(DataManager.Instance.gameData.iScore);
-        SetScoreText(DataManager.Instance.gameData.iGold);
+        SetMoneyText(DataManager.Instance.gameData.iGold);
     }
 
 }
