@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Liquor :ObjectBase
 {
+    const float c_MoveSpeed = 2.0f;
     const int c_Max_ReinForceCount = 3;
 
     public int level = 1;
@@ -55,8 +56,7 @@ public class Liquor :ObjectBase
 
     private void MoveTo()
     {
-        movePower = Quaternion.AngleAxis(angle, Vector3.down) * new Vector3(0, -1, 0) * Time.deltaTime;
-        Debug.Log(angle);
+        movePower = Quaternion.AngleAxis(angle, Vector3.forward) * new Vector3(0, -c_MoveSpeed, 0) * Time.deltaTime;
         transform.position += movePower;
     }
 }
