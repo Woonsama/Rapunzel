@@ -36,9 +36,9 @@ public class GameController : ObjectBase
 
     protected override IEnumerator OnAwakeCoroutine()
     {
-       // enemySpawnData = new EnemySpawnData[waveCount];
+        DataManager.Instance.gameData.ResetScore();
 
-        for(int i = 0; i < waveCount; i++)
+        for (int i = 0; i < waveCount; i++)
 		{
             yield return StartCoroutine(Wave_Coroutine());
         }

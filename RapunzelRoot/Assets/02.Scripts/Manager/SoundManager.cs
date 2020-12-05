@@ -65,7 +65,6 @@ public class SoundManager : SingletonMonoBase<SoundManager>
             source.PlayOneShot(clip);
 
             delayTask = Task.Delay((int)(delay * 1000));
-            Debug.Log(delayTask.IsCompleted);
         };
 
         if(isSoundOn)

@@ -115,7 +115,7 @@ public class cEnemy : MonoBehaviour
 
     public void HitbyPotion(int _value, int _damage)
     {
-        if (m_nType == _value)//설절된 커멘드가 포션커멘드와 같을때
+        if (m_nType == _value || _value == 100)//설정된 커멘드가 포션커멘드와 같을때
         {
             Hit(_damage);
         }
