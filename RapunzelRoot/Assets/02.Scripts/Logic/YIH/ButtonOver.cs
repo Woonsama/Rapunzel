@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonOver : MonoBehaviour
+public class ButtonOver : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
 {
     [SerializeField]
     [Header("롤오버이미지")]
@@ -20,12 +21,12 @@ public class ButtonOver : MonoBehaviour
         beforeImage = thisimage.sprite;
     }
 
-	private void OnMouseEnter()
-	{
+    public void OnPointerEnter(PointerEventData eventData)
+    {
         thisimage.sprite = loloverimage;
 
     }
-	private void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
 	{
         thisimage.sprite = beforeImage;
 
