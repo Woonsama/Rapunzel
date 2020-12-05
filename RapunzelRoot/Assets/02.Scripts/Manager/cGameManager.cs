@@ -32,7 +32,7 @@ public class cGameManager : MonoBehaviour
         cEnemyDeadCheck.instance.m_nEnemyCount = 0;//라운드시작시 적수 초기화
         GameObject spawner = Instantiate(EnemySpawner, Vector3.zero, Quaternion.identity);
 
-        //스테이지별 스포너세팅
+        //스테이지별 스포너세팅(스폰딜레이,스폰주기, 한번에몇마리, 총스폰되는몬스터의수
         spawner.GetComponent<cEnemySpawner>().Init(2, 1, 1, 20);
 
         g_bIsGameStart = true;

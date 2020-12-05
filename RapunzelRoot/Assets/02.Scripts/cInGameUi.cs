@@ -18,8 +18,6 @@ public class cInGameUi : MonoBehaviour
     [SerializeField]
     private Sprite m_imgHpFull;
 
-    [SerializeField]
-    private Text tests;
 
     private void Awake()
 	{
@@ -44,10 +42,6 @@ public class cInGameUi : MonoBehaviour
     public void HpHit(int _index)
     {
         m_goHps[_index].GetComponent<Image>().sprite = m_imgHpempty;
-    }
-	private void Update()
-	{
-        tests.text = cEnemyDeadCheck.instance.m_nEnemyCount.ToString();
     }
 
 }
