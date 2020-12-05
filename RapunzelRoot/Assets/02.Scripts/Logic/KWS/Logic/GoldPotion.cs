@@ -13,5 +13,6 @@ public class GoldPotion : ObjectBase
     private void Bomb()
     {
 
+        Destroy(this.gameObject);
     }
 }

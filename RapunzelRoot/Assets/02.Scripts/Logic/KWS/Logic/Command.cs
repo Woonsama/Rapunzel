@@ -19,6 +19,10 @@ public class Command : ObjectBase
     [Header("Liquor Answer Index")]
     public int liquorIndex;
 
+    [Header("Gold Potion")]
+    public GameObject goldPotion;
+    public Vector3 goldPotionGeneratePos;
+
     public bool isCorrectCommand { get; set; }
 
     private void Update()
@@ -40,7 +44,12 @@ public class Command : ObjectBase
         if (Input.GetKeyDown(KeyCode.W)) Typing("W");
         if (Input.GetKeyDown(KeyCode.E)) Typing("E");
         if (Input.GetKeyDown(KeyCode.R)) Typing("R");
+        if (Input.GetKeyDown(KeyCode.LeftShift)) CreateGoldPotion();
+    }
 
+    private void CreateGoldPotion()
+    {
+        Instantiate(goldPotion, goldPotionGeneratePos, Quaternion.identity);
     }
 
     private void Typing(string str_Command)
