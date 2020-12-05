@@ -9,6 +9,7 @@ public class cEnemyDeadCheck : MonoBehaviour
 	public void AddEnemyCount(int _value)
     {
         m_nEnemyCount = _value;
+        Debug.Log(_value);
     }
 
     public void MinusEnemyCount()

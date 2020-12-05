@@ -31,13 +31,8 @@ public class cEnemySpawner : MonoBehaviour
     [SerializeField]
     [Header("deadchecker")]
     public cEnemyDeadCheck cEDC;
-
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        Init(0,0,0,0);
-    }
+    
+ 
 
 	// Update is called once per frame
 	void Update()
@@ -66,6 +61,7 @@ public class cEnemySpawner : MonoBehaviour
         m_fCurrentSpawnTime = 0;
         cEDC.m_nEnemyCount += _limitspawn;//적수체크 증가
     }//스폰시 몬스터체력설정하기
+
     private IEnumerator SpawnEnemy()
     {
         for (int i = 0; i < m_nHowMany; i++)

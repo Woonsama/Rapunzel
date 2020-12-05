@@ -58,6 +58,7 @@ public class GameController : ObjectBase
         }
 
         yield return StartCoroutine(Shop_Coroutine());
+        DataManager.Instance.currentWaveIndex++;
     }
 
     private IEnumerator Shop_Coroutine()
@@ -78,22 +79,14 @@ public class GameController : ObjectBase
         command.ReleaseCommand();
         isWaveClear = false;
 
-        print(DataManager.Instance.currentWaveIndex);
-
-        print( enemySpawnData[DataManager.Instance.currentWaveIndex].spawnDelay);
-        print( enemySpawnData[DataManager.Instance.currentWaveIndex].spawnTime);
-        print( enemySpawnData[DataManager.Instance.currentWaveIndex].howMany);
-        print( enemySpawnData[DataManager.Instance.currentWaveIndex].maxSpawnCount);
-
         EnemySpawner.GetComponent<cEnemySpawner>().Init(
             enemySpawnData[DataManager.Instance.currentWaveIndex].spawnDelay,
             enemySpawnData[DataManager.Instance.currentWaveIndex].spawnTime,
             enemySpawnData[DataManager.Instance.currentWaveIndex].howMany,
             enemySpawnData[DataManager.Instance.currentWaveIndex].maxSpawnCount);
 
-        DataManager.Instance.currentWaveIndex++;
 
-        ShopUI.SetActive(false);
+       // ShopUI.SetActive(false);
     }
 
     private IEnumerator Command_Coroutine()
