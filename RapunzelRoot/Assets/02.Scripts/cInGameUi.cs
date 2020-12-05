@@ -18,6 +18,13 @@ public class cInGameUi : MonoBehaviour
     [SerializeField]
     private Sprite m_imgHpFull;
 
+    [Header("Button - SoundOnOff")]
+    public Button button_SoundOnOff;
+
+    [Header("Sprite - SoundOnOff")]
+    public Sprite soundOn;
+    public Sprite soundOff;
+
 
     private void Awake()
 	{
@@ -29,6 +36,9 @@ public class cInGameUi : MonoBehaviour
         {
             m_goHps[i].GetComponent<Image>().sprite = m_imgHpFull;
         }
+
+        //SoundButton
+        button_SoundOnOff.onClick?.AddListener(OnClickSoundOnOff);
     }
 
     public void SetScoreText(int _value)
@@ -48,5 +58,19 @@ public class cInGameUi : MonoBehaviour
         SetScoreText(DataManager.Instance.gameData.iScore);
         SetMoneyText(DataManager.Instance.gameData.iGold);
     }
+
+    #region private
+
+    private void OnClickSoundOnOff()
+    {
+        if(SoundManager.Instance.isSoundOn)
+            button_SoundOnOff.GetComponent<Image>().sprite = soundOff;
+        else
+            button_SoundOnOff.GetComponent<Image>().sprite = soundOn;
+
+        SoundManager.Instance.isSoundOn = !SoundManager.Instance.isSoundOn;
+    }
+
+    #endregion private
 
 }

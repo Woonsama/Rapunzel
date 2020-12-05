@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 public class SoundManager : SingletonMonoBase<SoundManager>
 {
+    public bool isSoundOn = true;
+
     delegate void AudioDelegate();
     private AudioSource targetSource;
     Task delayTask;
 
     public void PlayOneShot(AudioClip audioClip, float delay = 0, float volume = 1.0f, float pitch = 1.0f)
-    {
+    {        
         AudioDelegate clipPlay = delegate ()
         {
             AudioSource source;
@@ -31,14 +33,18 @@ public class SoundManager : SingletonMonoBase<SoundManager>
             Debug.Log(delayTask.IsCompleted);
         };
 
-        if (delayTask == null )
+        if(isSoundOn)
         {
-            clipPlay();
+            if (delayTask == null )
+            {
+                clipPlay();
+            }
+            else if(delayTask.IsCompleted)
+            {
+                clipPlay();
+            }        
         }
-        else if(delayTask.IsCompleted)
-        {
-            clipPlay();
-        }        
+
     }
 
     public void PlayOneShot(string path, float delay = 0, float volume = 1.0f, float pitch = 1.0f)
@@ -62,57 +68,72 @@ public class SoundManager : SingletonMonoBase<SoundManager>
             Debug.Log(delayTask.IsCompleted);
         };
 
-        if (delayTask == null)
+        if(isSoundOn)
         {
-            clipPlay();
+            if (delayTask == null)
+            {
+                clipPlay();
+            }
+            else if (delayTask.IsCompleted)
+            {
+                clipPlay();
+            }
         }
-        else if (delayTask.IsCompleted)
-        {
-            clipPlay();
-        }
+
     }
 
     public void PauseOneShot()
     {
-        targetSource.Pause();
+        if (isSoundOn)
+            targetSource.Pause();
     }
 
     public void UnPauseOneShot()
     {
-        targetSource.UnPause();
+        if (isSoundOn)
+            targetSource.UnPause();
     }
 
     public void StopBGM()
     {
-        Camera.main.GetComponent<AudioSource>().Stop();
+        if (isSoundOn)
+            Camera.main.GetComponent<AudioSource>().Stop();
     }
 
     public void PlayBGM()
     {
-        Camera.main.GetComponent<AudioSource>().Play();
+        if (isSoundOn)
+            Camera.main.GetComponent<AudioSource>().Play();
     }
+
     public void PlayBGM(string path, float volume = 1.0f,  bool isLoop = true)
     {
-        AudioSource source = Camera.main.GetComponent<AudioSource>();
-        source.clip = Resources.Load(path) as AudioClip;
-        source.Play();
-        source.loop = isLoop;
-        source.volume = volume;
+        if (isSoundOn)
+        {
+            AudioSource source = Camera.main.GetComponent<AudioSource>();
+            source.clip = Resources.Load(path) as AudioClip;
+            source.Play();
+            source.loop = isLoop;
+            source.volume = volume;
+        }
     }
 
     public void PuaseBGM()
     {
-        Camera.main.GetComponent<AudioSource>().Pause();
+        if (isSoundOn)
+            Camera.main.GetComponent<AudioSource>().Pause();
     }
 
     public void UnPuaseBGM()
     {
-        Camera.main.GetComponent<AudioSource>().UnPause();
+        if (isSoundOn)
+            Camera.main.GetComponent<AudioSource>().UnPause();
     }
 
     public void SetVolumeBGM(float value)
     {
-        Camera.main.GetComponent<AudioSource>().volume = value;
+        if (isSoundOn)
+            Camera.main.GetComponent<AudioSource>().volume = value;
     }
 
     /// <summary>
@@ -121,7 +142,8 @@ public class SoundManager : SingletonMonoBase<SoundManager>
     /// <param name="volume">[Min = 0 / Max = 1]</param>
     public void SetVolume(float volume)
     {
-        targetSource.volume = volume;
+        if (isSoundOn)
+            targetSource.volume = volume;
     }
 
     /// <summary>
@@ -130,6 +152,7 @@ public class SoundManager : SingletonMonoBase<SoundManager>
     /// <param name="pitch">[Min = 0 / MAX = 3]</param>
     public void SetPitch(float pitch)
     {
-        targetSource.pitch = pitch;
+        if (isSoundOn)
+            targetSource.pitch = pitch;
     }
 }

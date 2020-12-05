@@ -65,7 +65,9 @@ public class Command : ObjectBase
             else
             {
                 if(str_LiquorCombo[i].Length < str_CurrentCommand.Length)
-                ReleaseCommand(); 
+                {
+                    ReleaseCommand(); 
+                }
             }
 
         }
