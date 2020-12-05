@@ -22,7 +22,7 @@ public class Liquor :ObjectBase
     public int[] price = new int[c_Max_ReinForceCount];
     public Sprite liquor_Full;
 
-    private Image image;
+    private SpriteRenderer spriteRender;
 
     private Vector3 originPos;
     private float angle;
@@ -31,8 +31,11 @@ public class Liquor :ObjectBase
     {
         angle = GameObject.Find("Shooter").transform.GetChild(1).transform.eulerAngles.z;
         SetOriginalPos();
-        image = GetComponent<Image>();
-        image.sprite = potion[DataManager.Instance.PotionLevel[(int)ePotioColorType]];
+        spriteRender = GetComponent<SpriteRenderer>();
+
+        Debug.Log(spriteRender);
+
+        spriteRender.sprite = potion[DataManager.Instance.PotionLevel[(int)ePotioColorType]];
         return base.OnAwakeCoroutine();
     }
 
@@ -43,7 +46,7 @@ public class Liquor :ObjectBase
 
     public void ChangeImage_Full()
     {
-        image.sprite = liquor_Full;
+        spriteRender.sprite = liquor_Full;
     }
 
     private int GetDamage()

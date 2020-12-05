@@ -8,7 +8,7 @@ public class LiquorGenerator : MonoBehaviour
 
     [Header("Liquor")]
     public GameObject[] liquor = new GameObject[c_LiquorCount];
-
+    
     /// <summary>
     /// 물약을 생성함.
     /// </summary>

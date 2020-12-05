@@ -59,6 +59,7 @@ public class Command : ObjectBase
                 liquorIndex = i;
                 ReleaseCommand();
                 isCorrectCommand = true;
+                SoundManager.Instance.PlayOneShot("Sound/InGame/CommandCorrect");
                 Debug.Log("Command Correct");
                 break;
             }
@@ -67,6 +68,11 @@ public class Command : ObjectBase
                 if(str_LiquorCombo[i].Length < str_CurrentCommand.Length)
                 {
                     ReleaseCommand(); 
+                    SoundManager.Instance.PlayOneShot("Sound/InGame/CommandFail");
+                }
+                else
+                {
+                    SoundManager.Instance.PlayOneShot("Sound/InGame/CommandTouch");
                 }
             }
 

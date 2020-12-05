@@ -8,7 +8,9 @@ public class DataManager : SingletonMonoBase<DataManager>
 
     public int currentWaveIndex { get; set; } = 0;
 
-    public int[] PotionLevel= {0,0,0,0};
+    public int[] PotionLevel = new int[4];
+
+    public int iHaveGoldPotionCount { get; set; } = 0;
     /*
         Red = 0,
         Blue,
@@ -19,5 +21,6 @@ public class DataManager : SingletonMonoBase<DataManager>
     {
         DontDestroyOnLoad(this);
         gameData = new GameData();
+        gameData.LoadData();
     }
 }
