@@ -20,7 +20,7 @@ public class ButtonTransparent : MonoBehaviour
     private Button button;
 
     [Header("Alpha Hit Value")]
-    public float value;
+    public float value = 0.5f;
 
     private void Awake()
     {

@@ -26,6 +26,11 @@ public class Command : ObjectBase
         InputCheck();
     }
 
+    public void ReleaseCommand()
+    {
+        str_CurrentCommand = string.Empty;
+    }
+
     #region private
 
 
@@ -64,11 +69,6 @@ public class Command : ObjectBase
             }
 
         }
-    }
-
-    private void ReleaseCommand()
-    {
-        str_CurrentCommand = string.Empty;
     }
 
     #endregion private

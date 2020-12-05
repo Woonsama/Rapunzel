@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6803530243088720888}
   - component: {fileID: 2855505520736675817}
   - component: {fileID: -8634493191078546983}
+  - component: {fileID: -3217564885823830544}
   m_Layer: 0
   m_Name: potion4
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cd4d5565bb66e694490b87c540c77d24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 422b7e42da1c4d74085ec72011de1dfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,3 +162,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 150
+--- !u!210 &-3217564885823830544
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594642963333126418}
+  m_Enabled: 1
+  m_SortingLayerID: 1696942941
+  m_SortingLayer: 2
+  m_SortingOrder: 0

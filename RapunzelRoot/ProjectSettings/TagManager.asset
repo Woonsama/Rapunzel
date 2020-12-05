@@ -46,3 +46,6 @@ TagManager:
   - name: Enemys
     uniqueID: 1416317225
     locked: 0
+  - name: Potion
+    uniqueID: 1696942941
+    locked: 0

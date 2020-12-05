@@ -18,17 +18,26 @@ public class GameController : ObjectBase
     public Transform liquorGeneratePos;
     public GameObject liquorParent;
 
+    private bool isWaveClear;
+
     protected override IEnumerator OnAwakeCoroutine()
     {
-        Init();
-        yield return StartCoroutine(Command_Coroutine());
-        yield return StartCoroutine(Shooter_Coroutine());
-        yield return StartCoroutine(Fire_Coroutine());
+        while(!isWaveClear)
+        {
+            Init();
+            yield return StartCoroutine(Command_Coroutine());
+            yield return StartCoroutine(Shooter_Coroutine());
+            yield return StartCoroutine(Fire_Coroutine());
+            yield return null;
+        }
+
     }
 
     private void Init()
     {
         shooter.gameObject.SetActive(false);
+        command.ReleaseCommand();
+        isWaveClear = false;
     }
 
     private IEnumerator Command_Coroutine()
@@ -37,6 +46,7 @@ public class GameController : ObjectBase
         {
             yield return null;
         }
+        command.isCorrectCommand = false;
     }
 
     private IEnumerator Shooter_Coroutine()
@@ -59,7 +69,7 @@ public class GameController : ObjectBase
 
     private IEnumerator Fire_Coroutine()
     {
-        liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);
+        liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);        
         yield break;
     }
 
