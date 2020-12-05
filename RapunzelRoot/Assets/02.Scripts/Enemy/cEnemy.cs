@@ -19,6 +19,8 @@ public class cEnemy : MonoBehaviour
     [SerializeField]
     [Header("적용될중력값")]
     private float m_fGravityValue;
+    [SerializeField]
+    GameController gameController;
 
     private Animator animator;
     private Rigidbody2D rigid2d;
@@ -29,10 +31,13 @@ public class cEnemy : MonoBehaviour
     private cScorePlus cSP;
     private Transform m_trTargetPos;
 
+    cEnemyDeadCheck EnemyManager;
+
 
     // Start is called before the first frame update
     void Awake()
     {
+        EnemyManager = GameObject.Find("EnemyManager").GetComponent<cEnemyDeadCheck>();
         cSP = GetComponent<cScorePlus>();
         animator = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
@@ -62,6 +67,10 @@ public class cEnemy : MonoBehaviour
     }
     public void Init(float _fMaxHp,int _Upgrade)
     {
+        if (_Upgrade == 0)
+        {
+            this.transform.GetChild(0).gameObject.SetActive(false);
+        }
         m_trTargetPos = GameObject.FindGameObjectWithTag("Player").transform;
         m_fSpeed = Random.Range(1.0f, _Upgrade + 1);
         rigid2d.gravityScale = 0.0f;
@@ -92,11 +101,13 @@ public class cEnemy : MonoBehaviour
     {
         if (this.transform.position.y <= -20.0f)
         {
-            cEnemyDeadCheck.instance.MinusEnemyCount();
-            if (cEnemyDeadCheck.instance.IsGameOver())
-            {
+            EnemyManager.MinusEnemyCount();
 
+            if (EnemyManager.IsGameOver())
+            {
+                gameController.isWaveClear = true;
             }
+
             Destroy(this.gameObject);
         }
     }

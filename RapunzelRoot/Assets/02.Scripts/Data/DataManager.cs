@@ -6,6 +6,8 @@ public class DataManager : SingletonMonoBase<DataManager>
 {
     public GameData gameData;
 
+    public int currentWaveIndex { get; set; } = 0;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);

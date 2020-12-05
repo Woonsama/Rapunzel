@@ -18,11 +18,37 @@ public class GameController : ObjectBase
     public Transform liquorGeneratePos;
     public GameObject liquorParent;
 
-    private bool isWaveClear;
+    public bool isWaveClear { get; set; }
+
+
+    [Header("EnemySpawner")]
+    public GameObject EnemySpawner;
+
+    [Header("ShopUI")]
+    GameObject ShopUI;
+
+    [Header("Wave Count")]
+    public int waveCount;
+
+    [Header("Enemy Spawn Data")]
+    public EnemySpawnData[] enemySpawnData;
+
 
     protected override IEnumerator OnAwakeCoroutine()
     {
-        while(!isWaveClear)
+       // enemySpawnData = new EnemySpawnData[waveCount];
+
+        for(int i = 0; i < waveCount; i++)
+		{
+            yield return StartCoroutine(Wave_Coroutine());
+        }
+
+        yield return StartCoroutine(GameClear_Coroutine());
+    }
+
+    private IEnumerator Wave_Coroutine()
+	{
+        while (!isWaveClear)
         {
             Init();
             yield return StartCoroutine(Command_Coroutine());
@@ -31,13 +57,43 @@ public class GameController : ObjectBase
             yield return null;
         }
 
+        yield return StartCoroutine(Shop_Coroutine());
     }
+
+    private IEnumerator Shop_Coroutine()
+	{
+        //Open Shop
+        yield break;
+	}
+
+    private IEnumerator GameClear_Coroutine()
+	{
+        //Game Clear
+        yield break;
+	}
 
     private void Init()
     {
         shooter.gameObject.SetActive(false);
         command.ReleaseCommand();
         isWaveClear = false;
+
+        print(DataManager.Instance.currentWaveIndex);
+
+        print( enemySpawnData[DataManager.Instance.currentWaveIndex].spawnDelay);
+        print( enemySpawnData[DataManager.Instance.currentWaveIndex].spawnTime);
+        print( enemySpawnData[DataManager.Instance.currentWaveIndex].howMany);
+        print( enemySpawnData[DataManager.Instance.currentWaveIndex].maxSpawnCount);
+
+        EnemySpawner.GetComponent<cEnemySpawner>().Init(
+            enemySpawnData[DataManager.Instance.currentWaveIndex].spawnDelay,
+            enemySpawnData[DataManager.Instance.currentWaveIndex].spawnTime,
+            enemySpawnData[DataManager.Instance.currentWaveIndex].howMany,
+            enemySpawnData[DataManager.Instance.currentWaveIndex].maxSpawnCount);
+
+        DataManager.Instance.currentWaveIndex++;
+
+        ShopUI.SetActive(false);
     }
 
     private IEnumerator Command_Coroutine()
@@ -80,4 +136,14 @@ public class GameController : ObjectBase
             yield return null;
         }
     }
+}
+
+[System.Serializable]
+public class EnemySpawnData
+{
+    public float spawnDelay;
+    public float spawnTime;
+    public int howMany;
+    public int maxSpawnCount;
+
 }

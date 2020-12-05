@@ -28,8 +28,9 @@ public class cEnemySpawner : MonoBehaviour
 
     private float m_fCurrentSpawnTime;
 
-    
-
+    [SerializeField]
+    [Header("deadchecker")]
+    public cEnemyDeadCheck cEDC;
 
 
     // Start is called before the first frame update
@@ -63,7 +64,7 @@ public class cEnemySpawner : MonoBehaviour
         m_nHowMany = _howmany;
         m_nLimitSpawnNumber = _limitspawn;
         m_fCurrentSpawnTime = 0;
-        cEnemyDeadCheck.instance.m_nEnemyCount += _limitspawn;//적수체크 증가
+        cEDC.m_nEnemyCount += _limitspawn;//적수체크 증가
     }//스폰시 몬스터체력설정하기
     private IEnumerator SpawnEnemy()
     {
@@ -75,11 +76,11 @@ public class cEnemySpawner : MonoBehaviour
                 new Vector3(Random.Range(m_fSpawnMinnMax[0], m_fSpawnMinnMax[1]), m_fSpawnYPos, 0), Quaternion.identity);
             int _EnemyUpgrade = 0;
             int _MaxUpgrade = 0;
-            if (cGameManager.instance.g_nWave >= 4)
+            if (DataManager.Instance.currentWaveIndex >= 4)
             {
                 _MaxUpgrade = 1;
             }
-            if (cGameManager.instance.g_nWave >= 10)
+            if (DataManager.Instance.currentWaveIndex >= 10)
             {
                 _MaxUpgrade = 2;
             }
