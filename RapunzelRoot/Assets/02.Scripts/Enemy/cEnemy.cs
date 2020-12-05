@@ -75,6 +75,7 @@ public class cEnemy : MonoBehaviour
         m_fSpeed = Random.Range(1.0f, _Upgrade + 1);
         rigid2d.gravityScale = 0.0f;
         m_v3StartPos = this.transform.position;
+        m_fMaxHp = _fMaxHp;
         m_fHp = _fMaxHp;
         m_bIsDead = false;
         _fStarttime = 0;
@@ -134,16 +135,15 @@ public class cEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))//플레이어랑 충돌하면
         {
+            Player playercode = collision.gameObject.GetComponent<Player>();
+            playercode.Hit();
             Destroy(this.gameObject);
             EnemyManager.MinusEnemyCount();
             //플레이어 체력감소
         }
         if (collision.CompareTag("Liquor"))//포션이랑랑 충돌하면
         {
-            // csakedsaa.getcomad<adfwasd>().returnvasdldwa
-            //HitbyPosion
             HitbyPotion(1,10);
-            //플레이어 체력감소
         }
     }
 

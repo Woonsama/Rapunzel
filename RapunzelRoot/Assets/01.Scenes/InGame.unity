@@ -396,6 +396,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1725245246797298729, guid: 594703db94a284647aaa11a0b98f68be,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1416317225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725245246797298729, guid: 594703db94a284647aaa11a0b98f68be,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725245246797298729, guid: 594703db94a284647aaa11a0b98f68be,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8995506357091863419, guid: 594703db94a284647aaa11a0b98f68be,
         type: 3}
       propertyPath: EnemySpawner
@@ -555,10 +570,10 @@ MonoBehaviour:
   m_nHowMany: 2
   m_nLimitSpawnNumber: 10
   EnemyPrefabs:
-  - {fileID: 3070528969218850843, guid: d5d3041f176a56042949efdad703839c, type: 3}
   - {fileID: 3070528969218850843, guid: 412aaaf6d1abca641831fbef8367d519, type: 3}
   - {fileID: 3070528969218850843, guid: 195f93f091fb74c42bc1a60ae14ab624, type: 3}
   - {fileID: 3070528969218850843, guid: 71671af32b45f38418189b5520885f96, type: 3}
+  - {fileID: 3070528969218850843, guid: bcca4260bb05eca4f8873a2af00c981a, type: 3}
   m_fSpawnYPos: -10
   m_fSpawnMinnMax:
   - -4
