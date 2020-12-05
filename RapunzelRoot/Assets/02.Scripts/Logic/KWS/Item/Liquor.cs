@@ -13,7 +13,11 @@ public class Liquor :ObjectBase
     const float c_MoveSpeed = 2.0f;
     const int c_Max_ReinForceCount = 3;
 
-    public int level = 1;
+    [SerializeField]
+    [Header("Images")]
+    public Sprite[] potion = new Sprite[3];
+
+   // public int level = 1;
     public int[] damage = new int[c_Max_ReinForceCount];
     public int[] price = new int[c_Max_ReinForceCount];
     public Sprite liquor_Full;
@@ -28,6 +32,7 @@ public class Liquor :ObjectBase
         angle = GameObject.Find("Shooter").transform.GetChild(1).transform.eulerAngles.z;
         SetOriginalPos();
         image = GetComponent<Image>();
+        image.sprite = potion[DataManager.Instance.PotionLevel[(int)ePotioColorType]];
         return base.OnAwakeCoroutine();
     }
 
@@ -43,12 +48,7 @@ public class Liquor :ObjectBase
 
     private int GetDamage()
     {
-        return damage[level - 1];
-    }
-
-    public void LevelUp()
-    {
-        level++;
+        return damage[DataManager.Instance.PotionLevel[(int)ePotioColorType] + 1];
     }
 
     private void SetOriginalPos()

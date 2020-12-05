@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ePotioColorType: 2
-  level: 0
+  potion:
+  - {fileID: 21300000, guid: 44a865fcc77253644983a20f361a8b63, type: 3}
+  - {fileID: 21300000, guid: d74447df0b5cded4b97d1d8e918f46a2, type: 3}
+  - {fileID: 21300000, guid: a93a4c0db3688404a86464b1c4fb911d, type: 3}
   damage: 010000000200000003000000
   price: 000000000a0000001e000000
   liquor_Full: {fileID: 21300000, guid: e178acfa50d7f4342acd2ad97acc0edf, type: 3}
