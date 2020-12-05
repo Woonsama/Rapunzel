@@ -785,9 +785,25 @@ MonoBehaviour:
   waveCount: 1
   enemySpawnData:
   - spawnDelay: 2
-    spawnTime: 1
+    spawnTime: 3
     howMany: 1
-    maxSpawnCount: 20
+    maxSpawnCount: 2
+  - spawnDelay: 2
+    spawnTime: 2.8
+    howMany: 1
+    maxSpawnCount: 6
+  - spawnDelay: 2
+    spawnTime: 2.6
+    howMany: 1
+    maxSpawnCount: 8
+  - spawnDelay: 2
+    spawnTime: 2.4
+    howMany: 1
+    maxSpawnCount: 8
+  - spawnDelay: 2
+    spawnTime: 4
+    howMany: 2
+    maxSpawnCount: 10
 --- !u!1 &8995506357119678779
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87fd602ab973347418788a3cc210ed20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cInGameUI: {fileID: 0}
   str_LiquorCombo:
   - 
   - 

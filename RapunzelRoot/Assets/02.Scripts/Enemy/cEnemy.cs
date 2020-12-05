@@ -82,7 +82,7 @@ public class cEnemy : MonoBehaviour
         m_fHp = _fMaxHp;
         m_bIsDead = false;
         _fStarttime = 0;
-        cSP.SetScoreNMoney((_Upgrade * 2)+1, (_Upgrade*2)+1);
+        cSP.SetScoreNMoney(((_Upgrade * 2)+1) * 100, ((_Upgrade*2)+1) * 100);
     }
     private void DeadEvent()
     {

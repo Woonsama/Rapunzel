@@ -86,31 +86,33 @@ public class cShop : MonoBehaviour
         UseItem[2].SetActive(false);
     }
 
-    public void Pos1GradeUpgrade(int postiontype)
+    public void Pos1GradeUpgrade(int potiontype)
     {
         if (nowPage == 0)
         {
-            if (DataManager.Instance.PotionLevel[postiontype] == 0)
+            if (DataManager.Instance.PotionLevel[potiontype] == 0)
             {
                 if (DataManager.Instance.gameData.iGold >= 10)
                 {
-                    DataManager.Instance.PotionLevel[postiontype] = 1;
-                    PageSoldOut[postiontype].SetActive(true);
+                    DataManager.Instance.PotionLevel[potiontype] = 1;
+                    PageSoldOut[potiontype].SetActive(true);
                     DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-10);
-                    command.AddPattern(postiontype);
+                    command.AddPattern(potiontype);
+                    GameObject.Find("Canvas_InGameRoot").GetComponent<cInGameUi>().AddCommand(potiontype, 4);
                 }
             }
         }
         else if(nowPage == 1)
         {
-            if (DataManager.Instance.PotionLevel[postiontype] == 1)
+            if (DataManager.Instance.PotionLevel[potiontype] == 1)
             {
                 if (DataManager.Instance.gameData.iGold >= 30)
                 {
-                    PageSoldOut[postiontype].SetActive(true);
-                    DataManager.Instance.PotionLevel[postiontype] = 2;
+                    PageSoldOut[potiontype].SetActive(true);
+                    DataManager.Instance.PotionLevel[potiontype] = 2;
                     DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-30);
-                    command.AddPattern(postiontype);
+                    command.AddPattern(potiontype);
+                    GameObject.Find("Canvas_InGameRoot").GetComponent<cInGameUi>().AddCommand(potiontype, 5);
                 }
             }
         }

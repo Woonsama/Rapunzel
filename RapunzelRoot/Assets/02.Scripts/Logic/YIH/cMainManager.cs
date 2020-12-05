@@ -27,19 +27,23 @@ public class cMainManager : MonoBehaviour
 
     public void OnClick_GameButtonClick()
     {
-        SceneManager.LoadScene("InGame");
+        SoundManager.Instance.PlayOneShot("Sound/Title/ButtonChooseFinish");
+        SceneManager.LoadScene("InGame_Test");
     }
     public void OnClick_GameExit()
     {
+        SoundManager.Instance.PlayOneShot("Sound/Title/ButtonChooseFinish");
         Application.Quit();
     }
     public void OnClick_CreditClick()
     {
+        SoundManager.Instance.PlayOneShot("Sound/Title/ButtonChooseFinish");
         creditObject.SetActive(true);
     }
 
     public void OnClick_CreaditExit()
     {
+        SoundManager.Instance.PlayOneShot("Sound/Title/ButtonChooseFinish");
         creditObject.SetActive(false);
     }
 }

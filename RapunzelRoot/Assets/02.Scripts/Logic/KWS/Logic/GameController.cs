@@ -70,6 +70,12 @@ public class GameController : ObjectBase
         Destroy(enemy[i]);
     }
 
+    private IEnumerator WaveClear_Coroutine()
+    {
+        GameObject.Find("Canvas_WaveClear").GetComponent<Animation>().Play("WaveClear");
+        yield return new WaitForSeconds(1.3f);
+    }
+
     private IEnumerator Shop_Coroutine()
 	{
         yield return StartCoroutine(OpenShop());

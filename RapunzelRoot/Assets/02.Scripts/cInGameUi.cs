@@ -103,30 +103,6 @@ public class cInGameUi : MonoBehaviour
         {
             for(int j = 0; j < command.str_LiquorCombo[i].Length; j++)
             {
-                //Debug.Log(layer.child[i].transform.GetChild(0).transform.childCount);
-                //Debug.Log(command.str_LiquorCombo[i].Length);
-
-                //if (command.str_LiquorCombo[i].Length < layer.child[i].transform.GetChild(0).transform.childCount )
-                //{
-                //    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().enabled = true;
-
-                //    if (command.str_LiquorCombo[i][j] == 'Q')
-                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[0];
-
-                //    if (command.str_LiquorCombo[i][j] == 'W')
-                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[1];
-
-                //    if (command.str_LiquorCombo[i][j] == 'E')
-                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[2];
-
-                //    if (command.str_LiquorCombo[i][j] == 'R')
-                //        layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[3];
-                //}
-                //else
-                //{
-                //    layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().enabled = false;
-                //}
-
                 if (command.str_LiquorCombo[i][j] == 'Q')
                     layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[0];
 
@@ -140,6 +116,22 @@ public class cInGameUi : MonoBehaviour
                     layer.child[i].transform.GetChild(0).GetChild(j).GetComponent<Image>().sprite = commandSprite[3];
             }
         }
+    }
+
+    public void AddCommand(int first, int second)
+    {
+        if (command.str_LiquorCombo[first][second] == 'Q')
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[0];
+
+        if (command.str_LiquorCombo[first][second] == 'W')
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[1];
+
+        if (command.str_LiquorCombo[first][second] == 'E')
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[2];
+
+        if (command.str_LiquorCombo[first][second] == 'R')
+            layer.child[first].transform.GetChild(0).GetChild(second).GetComponent<Image>().sprite = commandSprite[3];
+
     }
 
     #endregion private

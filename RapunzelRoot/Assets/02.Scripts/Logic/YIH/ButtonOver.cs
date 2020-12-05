@@ -23,6 +23,7 @@ public class ButtonOver : MonoBehaviour, IPointerEnterHandler,IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        SoundManager.Instance.PlayOneShot("Sound/Title/ButtonMove");
         thisimage.sprite = loloverimage;
 
     }

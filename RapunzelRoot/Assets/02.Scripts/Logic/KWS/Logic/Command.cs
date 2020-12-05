@@ -44,7 +44,7 @@ public class Command : ObjectBase
 
     public void AddPattern(int index)
     {
-        str_LiquorCombo[index] += GetRandomCommand();
+        str_LiquorCombo[index] += GetRandomCommand();      
     }
 
     #region private
@@ -74,6 +74,8 @@ public class Command : ObjectBase
         if (Input.GetKeyDown(KeyCode.UpArrow)) Typing("E");
         if (Input.GetKeyDown(KeyCode.DownArrow)) Typing("R");
         if (Input.GetKeyDown(KeyCode.LeftShift)) CreateGoldPotion();
+        if (Input.GetKeyDown(KeyCode.Z)) ReleaseCommand();
+
     }
 
     private void CreateGoldPotion()
