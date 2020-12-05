@@ -8,7 +8,7 @@ public class cInGameUi : MonoBehaviour
     [SerializeField]
     private Text m_txtScoreText;
     [SerializeField]
-    private Text m_txtMopneyText;
+    private Text m_txtMoneyText;
     [SerializeField]
     private GameObject[] m_goHps;
 
@@ -24,6 +24,9 @@ public class cInGameUi : MonoBehaviour
     [Header("Sprite - SoundOnOff")]
     public Sprite soundOn;
     public Sprite soundOff;
+
+    [Header("Child Command Layer")]
+    public Child layer;
 
 
     private void Awake()
@@ -47,7 +50,7 @@ public class cInGameUi : MonoBehaviour
     }
     public void SetMoneyText(int _value)
     {
-        m_txtMopneyText.text = _value.ToString();
+        m_txtMoneyText.text = _value.ToString();
     }
     public void HpHit(int _index)
     {
@@ -55,7 +58,7 @@ public class cInGameUi : MonoBehaviour
     }
     public void HpHeal(int _index)
     {
-        m_goHps[_index].GetComponent<Image>().sprite = m_imgHpFull;
+            m_goHps[_index].GetComponent<Image>().sprite = m_imgHpFull;
     }
     private void Update()
 	{
@@ -69,11 +72,23 @@ public class cInGameUi : MonoBehaviour
     private void OnClickSoundOnOff()
     {
         if(SoundManager.Instance.isSoundOn)
+        {
             button_SoundOnOff.GetComponent<Image>().sprite = soundOff;
+            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.PauseOneShot();
+        }
         else
+        {
+            SoundManager.Instance.PlayBGM();
             button_SoundOnOff.GetComponent<Image>().sprite = soundOn;
+        }
 
         SoundManager.Instance.isSoundOn = !SoundManager.Instance.isSoundOn;
+    }
+
+    private void SetCommand()
+    {
+        
     }
 
     #endregion private

@@ -9,6 +9,9 @@ public class cShop : MonoBehaviour
     public Sprite[] pages;
 
 
+    [Header("closebutton")]
+    public GameObject closebutton;
+
     [Header("상점ui")]
     public Image shopui;
 
@@ -61,6 +64,7 @@ public class cShop : MonoBehaviour
         UseItem[0].SetActive(false);
         UseItem[1].SetActive(false);
         UseItem[2].SetActive(true);
+        closebutton.SetActive(true);
     }
     public void PrePageClick()
     {
@@ -82,6 +86,7 @@ public class cShop : MonoBehaviour
         UseItem[0].SetActive(true);
         UseItem[1].SetActive(true);
         UseItem[2].SetActive(false);
+        closebutton.SetActive(false);
     }
 
     public void Pos1GradeUpgrade(int postiontype)
@@ -138,6 +143,9 @@ public class cShop : MonoBehaviour
             DataManager.Instance.iHaveGoldPotionCount++;
             DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(-1000);
         }
+    }
+    public void ExitShop()
+    {
 
     }
 
