@@ -135,6 +135,7 @@ public class cEnemy : MonoBehaviour
         if (collision.CompareTag("Player"))//플레이어랑 충돌하면
         {
             Destroy(this.gameObject);
+            EnemyManager.MinusEnemyCount();
             //플레이어 체력감소
         }
         if (collision.CompareTag("Liquor"))//포션이랑랑 충돌하면
