@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93c0abc260d662745a8d414133733808
+guid: 6c12cc2d332d05e44ae59427f58d58be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2521574780197819232
-    second: GAME OUT_1_0
+      213: 6002487229775188012
+    second: Credit_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 96, y: 213, z: 101, w: 189}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -102,22 +102,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAME OUT_1_0
+      name: Credit_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 111
-        width: 174
-        height: 77
-      alignment: 0
+        x: 98
+        y: 216
+        width: 295
+        height: 93
+      alignment: 9
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0aca9b7e811910dd0800000000000000
-      internalID: -2521574780197819232
+      spriteID: c20919b355e1d4350800000000000000
+      internalID: 6002487229775188012
       vertices: []
       indices: 
       edges: []

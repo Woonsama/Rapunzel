@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93c0abc260d662745a8d414133733808
+guid: 8cb21215ab989b641928f28264721196
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2521574780197819232
-    second: GAME OUT_1_0
+      213: -5645935557359113636
+    second: Credit2_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -102,13 +102,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAME OUT_1_0
+      name: Credit2_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 111
-        width: 174
-        height: 77
+        x: 98
+        y: 216
+        width: 295
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,8 +116,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0aca9b7e811910dd0800000000000000
-      internalID: -2521574780197819232
+      spriteID: c5aecd6268b95a1b0800000000000000
+      internalID: -5645935557359113636
       vertices: []
       indices: 
       edges: []
