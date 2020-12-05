@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EnumData.ColorType;
 
 [System.Serializable]
 public class Liquor :ObjectBase
 {
+    [Header("Potion Color Type")]
+    public EPotionColorType ePotioColorType;
+
     const float c_MoveSpeed = 2.0f;
     const int c_Max_ReinForceCount = 3;
 

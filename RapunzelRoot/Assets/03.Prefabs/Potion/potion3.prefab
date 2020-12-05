@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b5f0d7e40b2d54297316cd23864e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ePotioColorType: 0
   level: 0
   damage: 010000000200000003000000
   price: 000000000a0000001e000000
