@@ -34,7 +34,7 @@ public class cInGameUi : MonoBehaviour
     [Header("Command Prefab")]
     public Sprite[] commandSprite = new Sprite[4];
 
-    private void Awake()
+    private void Start()
 	{
         Init();
 	}

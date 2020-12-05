@@ -48,11 +48,10 @@ public class GameController : ObjectBase
 
     private IEnumerator Wave_Coroutine()
 	{
-        print("시작");
-            Init();
+        Init();
+
         while (!isWaveClear)
         {
-            ShooterInit();
             StartCoroutine(GameCoroutine());
             yield return null;
         }        
@@ -119,6 +118,7 @@ public class GameController : ObjectBase
     }
 	private void Init()
 	{
+
         isWaveClear = false;
         EnemySpawner.GetComponent<cEnemySpawner>().Init(
             enemySpawnData[DataManager.Instance.currentWaveIndex].spawnDelay,
@@ -132,8 +132,8 @@ public class GameController : ObjectBase
     {
         while(!command.isCorrectCommand)
         {
-            if (isWaveClear == true)
-                break;
+            //if (isWaveClear == true)
+            //    break;
             yield return null;
         }
         command.isCorrectCommand = false;
@@ -159,7 +159,8 @@ public class GameController : ObjectBase
 
     private IEnumerator Fire_Coroutine()
     {
-        liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);        
+        liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);
+        ShooterInit();
         yield break;
     }
 
