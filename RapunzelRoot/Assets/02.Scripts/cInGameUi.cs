@@ -43,5 +43,10 @@ public class cInGameUi : MonoBehaviour
     {
         m_goHps[_index].GetComponent<Image>().sprite = m_imgHpempty;
     }
+	private void Update()
+	{
+        SetScoreText(DataManager.Instance.gameData.iScore);
+        SetScoreText(DataManager.Instance.gameData.iGold);
+    }
 
 }

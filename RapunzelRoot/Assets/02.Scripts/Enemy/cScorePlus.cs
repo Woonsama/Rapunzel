@@ -20,10 +20,12 @@ public class cScorePlus : MonoBehaviour
 
     public void AddScore()
     {
+        DataManager.Instance.gameData.Do_Add_Score(m_nScore);
         //죽으면 점수 추가
     }
     public void AddMoney()
     {
+        DataManager.Instance.gameData.Do_Add_Or_Minus_Gold(_money);
         //죽으면 돈추가
     }
 
