@@ -13,6 +13,10 @@ public class GameController : ObjectBase
     [Header("Player")]
     public Player player;
 
+    [Header("Liquor Generator")]
+    public LiquorGenerator liquorGenerator;
+    public GameObject liquorParent;
+
     protected override IEnumerator OnAwakeCoroutine()
     {
         Init();
@@ -54,7 +58,7 @@ public class GameController : ObjectBase
 
     private IEnumerator Fire_Coroutine()
     {
-
+        liquorGenerator.GenerateLiquor(command.liquorIndex, liquorParent.transform);
         yield break;
     }
 
