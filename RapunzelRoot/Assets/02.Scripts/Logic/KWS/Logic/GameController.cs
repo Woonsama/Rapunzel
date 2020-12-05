@@ -25,7 +25,7 @@ public class GameController : ObjectBase
     public GameObject EnemySpawner;
 
     [Header("ShopUI")]
-    GameObject ShopUI;
+   public  GameObject ShopUI;
 
     [Header("Wave Count")]
     public int waveCount;

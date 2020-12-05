@@ -53,11 +53,16 @@ public class cInGameUi : MonoBehaviour
     {
         m_goHps[_index].GetComponent<Image>().sprite = m_imgHpempty;
     }
-	private void Update()
+    public void HpHeal(int _index)
+    {
+        m_goHps[_index].GetComponent<Image>().sprite = m_imgHpFull;
+    }
+    private void Update()
 	{
         SetScoreText(DataManager.Instance.gameData.iScore);
         SetMoneyText(DataManager.Instance.gameData.iGold);
     }
+    
 
     #region private
 

@@ -52,3 +52,6 @@ TagManager:
   - name: Potion
     uniqueID: 1696942941
     locked: 0
+  - name: Shop
+    uniqueID: 731939833
+    locked: 0
