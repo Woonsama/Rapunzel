@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataManager : SingletonMonoBase<DataManager>
 {
-    GameData gameData;
+    public GameData gameData;
 
     private void Awake()
     {
