@@ -99,10 +99,9 @@ public class GameController : ObjectBase
         SoundManager.Instance.PlayBGM("Sound/Shop/ShopBGM");
 
         cShop shop = ShopUI.GetComponent<cShop>();
-        
+        shop.isClose = false;
         while (!shop.isClose)
         {
-            print(shop.isClose);
             yield return null;
         }
 
@@ -165,6 +164,7 @@ public class GameController : ObjectBase
     private IEnumerator Fire_Coroutine()
     {
         liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);
+        player.gameObject.transform.Find("goel").GetComponent<Animator>().SetTrigger("shot");
         ShooterInit();
         yield break;
     }

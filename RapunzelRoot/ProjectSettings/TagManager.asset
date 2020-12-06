@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Liquor
+  - goel
   layers:
   - Default
   - TransparentFX

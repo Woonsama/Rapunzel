@@ -163,6 +163,7 @@ public class cEnemy : MonoBehaviour
             {
                 Liquor liq = collision.gameObject.GetComponent<Liquor>();
                 HitbyPotion((int)liq.ePotioColorType, liq.GetDamage());
+                Destroy(collision.gameObject);
             }
         }
     }
