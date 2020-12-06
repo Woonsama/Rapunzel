@@ -80,6 +80,8 @@ public class GameController : ObjectBase
 
     private IEnumerator WaveClear_Coroutine()
     {
+        SoundManager.Instance.PlayBGM("Sound/InGame/WaveClear");
+
         GameObject.Find("Canvas_WaveClear").GetComponent<Animation>().Play("WaveClear");
         yield return new WaitForSeconds(1.3f);
     }
@@ -94,6 +96,7 @@ public class GameController : ObjectBase
     private IEnumerator OpenShop()
     {
         ShopUI.SetActive(true);
+        SoundManager.Instance.PlayBGM("Sound/Shop/ShopBGM");
 
         cShop shop = ShopUI.GetComponent<cShop>();
         
@@ -102,6 +105,8 @@ public class GameController : ObjectBase
             print(shop.isClose);
             yield return null;
         }
+
+        SoundManager.Instance.PlayBGM("Sound/InGame/InGameBGM");
 
     }
 

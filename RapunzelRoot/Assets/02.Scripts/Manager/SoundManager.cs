@@ -33,18 +33,14 @@ public class SoundManager : SingletonMonoBase<SoundManager>
             Debug.Log(delayTask.IsCompleted);
         };
 
-        if(isSoundOn)
+        if (delayTask == null )
         {
-            if (delayTask == null )
-            {
-                clipPlay();
-            }
-            else if(delayTask.IsCompleted)
-            {
-                clipPlay();
-            }        
+            clipPlay();
         }
-
+        else if(delayTask.IsCompleted)
+        {
+            clipPlay();
+        }        
     }
 
     public void PlayOneShot(string path, float delay = 0, float volume = 1.0f, float pitch = 1.0f)
@@ -83,13 +79,13 @@ public class SoundManager : SingletonMonoBase<SoundManager>
 
     public void PauseOneShot()
     {
-        if (isSoundOn)
+        if (isSoundOn && targetSource == true)
             targetSource.Pause();
     }
 
     public void UnPauseOneShot()
     {
-        if (isSoundOn)
+        if (isSoundOn && targetSource == false)
             targetSource.UnPause();
     }
 

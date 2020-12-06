@@ -85,12 +85,14 @@ public class cInGameUi : MonoBehaviour
         if(SoundManager.Instance.isSoundOn)
         {
             button_SoundOnOff.GetComponent<Image>().sprite = soundOff;
-            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.SetVolumeBGM(0);
             SoundManager.Instance.PauseOneShot();
         }
         else
         {
-            SoundManager.Instance.PlayBGM();
+            SoundManager.Instance.SetVolumeBGM(1);
+            SoundManager.Instance.UnPauseOneShot();
+
             button_SoundOnOff.GetComponent<Image>().sprite = soundOn;
         }
 
