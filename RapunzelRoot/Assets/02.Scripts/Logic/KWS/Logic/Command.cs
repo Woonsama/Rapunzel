@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Command : ObjectBase
 {
@@ -24,10 +25,27 @@ public class Command : ObjectBase
     public GameObject goldPotion;
     public Vector3 goldPotionGeneratePos;
 
+    [Header("Button")]
+    public Button up;
+    public Button down;
+    public Button left;
+    public Button right;
+    public Button reset;
+    public Button btn_GoldPotion;
+
+
+
     public bool isCorrectCommand { get; set; }
 
     protected override IEnumerator OnAwakeCoroutine()
     {
+        up.onClick?.AddListener(OnClick_UpArrow);
+        down.onClick?.AddListener(OnClick_DownArrow);
+        left.onClick?.AddListener(OnClick_LeftArrow);
+        right.onClick?.AddListener(OnClick_RightArrow);
+        reset.onClick?.AddListener(OnClick_Reset);
+
+
         InitPattern();
         return base.OnAwakeCoroutine();
     }
@@ -123,4 +141,38 @@ public class Command : ObjectBase
     }
 
     #endregion private
+
+    #region Event
+
+    public void OnClick_LeftArrow()
+    {
+        Typing("Q");
+    }
+
+    public void OnClick_RightArrow()
+    {
+        Typing("W");
+    }
+
+    public void OnClick_UpArrow()
+    {
+        Typing("E");
+    }
+
+    public void OnClick_DownArrow()
+    {
+        Typing("R");
+    }
+
+    public void OnClick_Reset()
+    {
+        ReleaseCommand();
+    }
+
+    public void OnClick_GoldPotion()
+    {
+        CreateGoldPotion();
+    }
+
+    #endregion Event
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : ObjectBase
 {
@@ -32,11 +33,17 @@ public class GameController : ObjectBase
     [Header("Enemy Spawn Data")]
     public EnemySpawnData[] enemySpawnData;
 
+    [Header("Button Fire")]
+    public Button button_Fire;
+
 
     protected override IEnumerator OnAwakeCoroutine()
     {
+        button_Fire.onClick?.AddListener(OnClick_Fire);
+
         DataManager.Instance.gameData.ResetScore();
         DataManager.Instance.gameData.ResetGold();
+        DataManager.Instance.currentWaveIndex = 0;
 
         for (int i = 0; i < waveCount; i++)
 		{
@@ -143,11 +150,12 @@ public class GameController : ObjectBase
         command.isCorrectCommand = false;
     }
 
+    bool isFire = false;
     private IEnumerator Shooter_Coroutine()
     {
         shooter.gameObject.SetActive(true);
 
-        bool isFire = false;
+        isFire = false;
 
         while(!isFire)
         {
@@ -163,6 +171,7 @@ public class GameController : ObjectBase
 
     private IEnumerator Fire_Coroutine()
     {
+        
         liquorGenerator.GenerateLiquor(command.liquorIndex,liquorGeneratePos, liquorParent.transform);
         player.gameObject.transform.Find("goel").GetComponent<Animator>().SetTrigger("shot");
         ShooterInit();
@@ -174,6 +183,14 @@ public class GameController : ObjectBase
         while(!player.isDie)
         {            
             yield return null;
+        }
+    }
+
+    private void OnClick_Fire()
+    {
+        if(!isFire)
+        {
+            isFire = true;
         }
     }
 }
